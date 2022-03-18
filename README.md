@@ -50,13 +50,13 @@ Run the install script either by being root:
 
 ```bash
 $ su -
-# ./install.sh
+# ./installer.sh
 ```
 
 or by using sudo
 
 ```bash
-$ sudo ./install.sh
+$ sudo ./installer.sh
 ```
 
 And, as easy as this, **mad** will be installed; you will be asked your browser of election, to which the default value is 'firefox'.
