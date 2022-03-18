@@ -4,8 +4,6 @@
 INSTALL_PATH="INSTALL_PATH_FOLDER"
 BROWSER="CHOSEN_BROWSER"
 
-
-
 TMP_FOLDER="$INSTALL_PATH/tmp"
 TRACKER="$TMP_FOLDER/tracker"
 
@@ -38,10 +36,9 @@ NAME="$(basename $1)"_"$VAL".html
 
 pandoc $1 >> $TMP_FOLDER/$NAME 
 
-firefox $TMP_FOLDER/$NAME
+firefox $TMP_FOLDER/$NAME & 
 
 if [ "$AM_I_FIRST" == "1" ]
 then
 	rm -fr $TMP_FOLDER/* 
 fi
-

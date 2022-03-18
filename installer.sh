@@ -32,7 +32,7 @@ echo "0 - I dont use any common browser"
 echo "1 - firefox"
 echo "2 - opera"
 echo "3 - chromium"
-echo "3 - chrome"
+echo "4 - chrome"
 
 read -p 'chose your browser of choice: ' BROWSE_CHOICE; 
 
