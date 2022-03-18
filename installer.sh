@@ -68,6 +68,8 @@ mkdir $INSTALL_FOLDER/tmp
 touch $INSTALL_FOLDER/tmp/tracker
 
 chmod +x $INSTALL_FOLDER/mad
+chmod o+x $INSTALL_FOLDER/tmp
+
 rm ./mad.tmp
 
 ln -s $INSTALL_FOLDER/mad /usr/bin/mad
