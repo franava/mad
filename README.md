@@ -46,14 +46,7 @@ $ cd mad
 ```
 
 Inside this folder, among with this *README.md* and a *LICENCE* file, you'll find the raw *markdown* script and an install script.
-Run the install script either by being root:
-
-```bash
-$ su -
-# ./installer.sh
-```
-
-or by using sudo
+Run the install script being sudo:
 
 ```bash
 $ sudo ./installer.sh

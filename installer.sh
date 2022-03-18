@@ -1,7 +1,8 @@
 #!/bin/bash
+set -e 
+
 
 CURRENT_FOLDER=`pwd`
-set -e 
 
 get_prev_folder () {
 	cd ..
@@ -68,10 +69,12 @@ mkdir $INSTALL_FOLDER/tmp
 touch $INSTALL_FOLDER/tmp/tracker
 
 chmod +x $INSTALL_FOLDER/mad
-chmod o+x $INSTALL_FOLDER/tmp
+
+chown -R $SUDO_UID.$SUDO_GID $INSTALL_FOLDER/
 
 rm ./mad.tmp
 
 ln -s $INSTALL_FOLDER/mad /usr/bin/mad
+chown -h $SUDO_UID.$SUDO_GID /usr/bin/mad 
 
 
