@@ -70,7 +70,7 @@ Please note that after running the **install.sh** script, the folder state will 
 
 ## Is this it
 
-Well, kind of. This is what the script was originally written. But given the fact that **pandocs** provides a huge amount of functionalities, this is just the first step. 
+Well, kind of. This is what the script was originally written for. But given the fact that **pandocs** provides a huge amount of functionalities, this is just the first step. 
 
 - How will this repo progress? *I have no idea*
 
