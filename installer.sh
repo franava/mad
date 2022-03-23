@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e 
 
+AMISUDO=$(echo $SUDO_COMMAND)
+
+if [ "$SUDO_COMMAND" == "" ]
+then
+	echo "This script has to be executed as sudo"
+	exit 1
+fi
 
 CURRENT_FOLDER=`pwd`
 
@@ -10,10 +17,36 @@ get_prev_folder () {
 	cd - > /dev/null
 }
 
-
-
 UPPER_FOLDER=`get_prev_folder`
 INSTALL_FOLDER="$UPPER_FOLDER/mad_installation"
+
+if test "$#" -eq 1 
+then
+	if [ "$1" == "-u" ] 
+	then
+		if [ -d "$INSTALL_FOLDER" ]
+		then
+			rm -fr $INSTALL_FOLDER
+		else	
+			echo "mad is not currently installed on this machine"
+		fi
+
+		if [ -L /usr/bin/mad ]
+		then	
+			rm /usr/bin/mad
+		else
+			echo "mad was not linked in '/usr/bin/' folder"
+		fi
+	else
+		echo "case not recognized"
+		echo "./installer.sh [option] "
+		echo ""
+		echo "currently available options:"
+		echo "    -u    uninstall mad"
+	fi
+	exit 0
+fi
+
 
 if [ -d $INSTALL_FOLDER ]
 then
