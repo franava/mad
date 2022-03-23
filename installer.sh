@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e 
 
-AMISUDO=$(echo $SUDO_COMMAND)
-
 if [ "$SUDO_COMMAND" == "" ]
 then
 	echo "This script has to be executed as sudo"
