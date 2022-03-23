@@ -9,7 +9,7 @@ The **mad** script also allows you to open multiple files in the same browser in
 
 ## Why should I use mad?
 
-Well, in principle you should not. Expecially if you are an IDE user, you might never had the need for such a tool. 
+Well, in principle you should not. Expecially if you are an IDE user, you might never have the need for such a tool. 
 But in the remote chance you are a "command line" type of guy, this might actually come in handy.
 
 Imagine you are browsing a git repository you found on the development platform you are currently using at work.
