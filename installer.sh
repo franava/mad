@@ -70,10 +70,12 @@ read -p 'chose your browser of choice: ' BROWSE_CHOICE;
 
 BROWSER="firefox"
 
+COMMAND_LINE_BROWSER=0
+
 case $BROWSE_CHOICE in
 	0)
-		print "insert your Browser of election (the shell command): "
-	       	read BROWSER
+		
+	       	read -p 'insert your Browser of election (the shell command): ' BROWSER;
 		;;
 	1)
 		;;
