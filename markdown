@@ -3,6 +3,7 @@
 #these variables are defined at install time
 INSTALL_PATH="INSTALL_PATH_FOLDER"
 BROWSER="CHOSEN_BROWSER"
+CLB="COMMAND_LINE_BROWSER"
 
 TMP_FOLDER="$INSTALL_PATH/tmp"
 TRACKER="$TMP_FOLDER/tracker"
@@ -35,8 +36,12 @@ echo $VAL > $TRACKER
 NAME="$(basename $1)"_"$VAL".html
 
 pandoc $1 >> $TMP_FOLDER/$NAME 
-
-firefox $TMP_FOLDER/$NAME & 
+if [ "$CLB" == "1" ]
+then
+	$BROWSER $TMP_FOLDER/$NAME
+else
+	$BROWSER $TMP_FOLDER/$NAME & 
+fi
 
 if [ "$AM_I_FIRST" == "1" ]
 then
