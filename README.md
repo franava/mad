@@ -44,7 +44,7 @@ $ git clone git@github.com:franava/mad.git
 $ cd mad
 ```
 
-Inside this folder, along with this *README.md* and a *LICENCE* file, you'll find the raw *markdown* script and an install script.
+Inside this folder, along with this *README.md* and a *LICENSE* file, you'll find the raw *markdown* script and an install script.
 Run the install script using sudo:
 
 ```bash
