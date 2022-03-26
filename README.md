@@ -62,7 +62,7 @@ in the *mad* folder.
 Please note that after running the **install.sh** script, the folder state will be as following:
 
 ```bash
-<my-install-folder>-
+<my-install-folder>
 		   |
 		   |___ mad
 		   |___ mad_installation
