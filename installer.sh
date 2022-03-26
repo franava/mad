@@ -76,6 +76,7 @@ case $BROWSE_CHOICE in
 	0)
 		
 	       	read -p 'insert your Browser of election (the shell command): ' BROWSER;
+		read -p 'is it a command line browser or windowed one? [y/n]' COMMAND_LINE_BROWSER;
 		;;
 	1)
 		;;
@@ -95,9 +96,15 @@ case $BROWSE_CHOICE in
 		;;
 esac
 
-echo "Browser: $BROWSER"
-cat ./mad.tmp | sed "s|CHOSEN_BROWSER|$BROWSER|g" > $INSTALL_FOLDER/mad
+cat ./mad.tmp | sed "s|CHOSEN_BROWSER|$BROWSER|g" > ./mad2.tmp 
+	
 
+if [ "$COMMAND_LINE_BROWSER" == "y" ]
+then
+	cat ./mad2.tmp | sed "s|COMMAND_LINE_BROWSER|1|g" > $INSTALL_FOLDER/mad
+else
+	cat ./mad2.tmp | sed "s|COMMAND_LINE_BROWSER|0|g" > $INSTALL_FOLDER/mad
+fi
 mkdir $INSTALL_FOLDER/tmp
 touch $INSTALL_FOLDER/tmp/tracker
 
@@ -105,7 +112,7 @@ chmod +x $INSTALL_FOLDER/mad
 
 chown -R $SUDO_UID.$SUDO_GID $INSTALL_FOLDER/
 
-rm ./mad.tmp
+rm ./mad.tmp ./mad2.tmp -f
 
 ln -s $INSTALL_FOLDER/mad /usr/bin/mad
 chown -h $SUDO_UID.$SUDO_GID /usr/bin/mad 
