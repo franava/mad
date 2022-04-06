@@ -11,24 +11,29 @@ TRACKER="$TMP_FOLDER/tracker"
 if [ "$1" == "--reset" ]
 then
 	rm -fr $TMP_FOLDER/*
+	echo 0 >> $TRACKER
 	exit 0
 fi
 
-if [ "$1" == "--files" ]
+if [ "$1" == "--list" ]
 then
 	ls $TMP_FOLDER/*.html 2>&1 | grep -v cannot 
 	exit 0
 fi
 
+if [ "$1" == "--files" ]
+then
+	ls $TMP_FOLDER/*.html 2>&1 | grep -v cannot | wc -l
+	exit 0
+fi
+
 VAL=0
-AM_I_FIRST=1
 
 if [ -f "$TRACKER" ]
 then
 	PAST=$(cat $TRACKER)
 	VAL=$(expr $PAST + 1)
 	rm -fr $TRACKER
-	AM_I_FIRST=0
 fi
 
 echo $VAL > $TRACKER
@@ -41,9 +46,4 @@ then
 	$BROWSER $TMP_FOLDER/$NAME
 else
 	$BROWSER $TMP_FOLDER/$NAME & 
-fi
-
-if [ "$AM_I_FIRST" == "1" ]
-then
-	rm -fr $TMP_FOLDER/* 
 fi
