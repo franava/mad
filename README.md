@@ -67,6 +67,14 @@ Please note that after running the **install.sh** script, the folder state will 
 		   |___ mad
 		   |___ mad_installation
 ```
+## And what about uninstalling
+
+Easy as pie: just run the command:
+```bash 
+$ sudo ./installer.sh -u
+```
+and just like this you'll get rid of it
+
 
 ## Is this it
 
