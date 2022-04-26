@@ -20,7 +20,7 @@ Chances are you dont have many tool insisting on said platform; chances are you 
 Izipizi: in your command line simply type
 
 ```bash
-$ mad <filename>
+mad <filename>
 ```
 
 and the script will convert your markdown file in an html file, eventually opening it.
@@ -39,23 +39,23 @@ First of all, install [pandoc](https://github.com/jgm/pandoc): this can be achie
 Then clone this repo in your installing folder and enter the repo by typing:
 
 ```bash
-$ cd <my-install-folder> 
-$ git clone git@github.com:franava/mad.git
-$ cd mad
+cd <my-install-folder> 
+git clone git@github.com:franava/mad.git
+cd mad
 ```
 
 Inside this folder, along with this *README.md* and a *LICENSE* file, you'll find the raw *markdown* script and an install script.
 Run the install script using sudo:
 
 ```bash
-$ sudo ./installer.sh
+sudo ./installer.sh
 ```
 
 And, as easy as this, **mad** will be installed; during the install process you will be asked your browser of election [if the process fails, the default will be 'firefox'].
 To check if the installation has gone as expected, simply run:
 
 ```bash
-$ mad README.md
+mad README.md
 ```
 
 in the *mad* folder.
@@ -71,7 +71,7 @@ Please note that after running the **install.sh** script, the folder state will 
 
 Easy as pie: just run the command:
 ```bash 
-$ sudo ./installer.sh -u
+sudo ./installer.sh -u
 ```
 and just like this you'll get rid of it
 
