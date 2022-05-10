@@ -75,7 +75,7 @@ COMMAND_LINE_BROWSER=0
 case $BROWSE_CHOICE in
 	0)
 		
-	       	read -p 'insert your Browser of election (the shell command): ' BROWSER;
+        read -p 'insert your Browser of election (the shell command): ' BROWSER;
 		read -p 'is it a command line browser or windowed one? [y/n]' COMMAND_LINE_BROWSER;
 		;;
 	1)
@@ -108,6 +108,8 @@ fi
 mkdir $INSTALL_FOLDER/tmp
 touch $INSTALL_FOLDER/tmp/tracker
 
+
+cp $CURRENT_FOLDER/format.css $INSTALL_FOLDER/format.css
 chmod +x $INSTALL_FOLDER/mad
 
 chown -R $SUDO_UID.$SUDO_GID $INSTALL_FOLDER/

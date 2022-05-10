@@ -63,9 +63,9 @@ Please note that after running the **install.sh** script, the folder state will 
 
 ```bash
 <my-install-folder>
-		   |
-		   |___ mad
-		   |___ mad_installation
+				   |
+				   |___ mad
+				   |___ mad_installation
 ```
 ## And what about uninstalling
 
