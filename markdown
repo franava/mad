@@ -40,7 +40,7 @@ echo $VAL > $TRACKER
 
 NAME="$(basename $1)"_"$VAL".html
 
-pandoc $1 >> $TMP_FOLDER/$NAME 
+pandoc -f markdown -t html5 -o $TMP_FOLDER/$NAME $1 -c style.css
 if [ "$CLB" == "1" ]
 then
 	$BROWSER $TMP_FOLDER/$NAME
