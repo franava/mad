@@ -50,4 +50,7 @@ then
 	else
 		$BROWSER $TMP_FOLDER/$NAME & 
 	fi
+else
+	echo "Result File: $TMP_FOLDER/$NAME"
 fi
+
