@@ -41,9 +41,13 @@ echo $VAL > $TRACKER
 NAME="$(basename $1)"_"$VAL".html
 
 pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $INSTALL_PATH/format.css
-if [ "$CLB" == "1" ]
+
+if [ "$2" != "--noexec" ]
 then
-	$BROWSER $TMP_FOLDER/$NAME
-else
-	$BROWSER $TMP_FOLDER/$NAME & 
+	if [ "$CLB" == "1" ]
+	then
+		$BROWSER $TMP_FOLDER/$NAME
+	else
+		$BROWSER $TMP_FOLDER/$NAME & 
+	fi
 fi
