@@ -35,14 +35,18 @@ then
 		else
 			echo "mad was not linked in '/usr/bin/' folder"
 		fi
+        exit 0
+    elif [ "$1" == "-x" ] 
+    then
+        echo "building mad without inputs" 
 	else
 		echo "case not recognized"
 		echo "./installer.sh [option] "
 		echo ""
 		echo "currently available options:"
 		echo "    -u    uninstall mad"
+        exit 0
 	fi
-	exit 0
 fi
 
 
