@@ -58,15 +58,18 @@ mkdir $INSTALL_FOLDER
 
 cat markdown | sed -e "s|INSTALL_PATH_FOLDER|${INSTALL_FOLDER}|g" > ./mad.tmp
 
-echo "# BrowserList"
-echo "0 - I dont use any common browser"
-echo "1 - firefox"
-echo "2 - opera"
-echo "3 - chromium"
-echo "4 - chrome"
+if [ "$1" != "-x" ]
+then
 
-read -p 'chose your browser of choice: ' BROWSE_CHOICE; 
+    echo "# BrowserList"
+    echo "0 - I dont use any common browser"
+    echo "1 - firefox"
+    echo "2 - opera"
+    echo "3 - chromium"
+    echo "4 - chrome"
 
+    read -p 'chose your browser of choice: ' BROWSE_CHOICE; 
+fi
 
 BROWSER="firefox"
 
