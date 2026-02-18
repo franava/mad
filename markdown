@@ -40,7 +40,7 @@ echo $VAL > $TRACKER
 
 NAME="$(basename $1)"_"$VAL".html
 
-pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $INSTALL_PATH/format.css
+pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $INSTALL_PATH/format.css $MAD_TAILORED_FLAGS
 
 if [ "$2" != "--noexec" ]
 then
