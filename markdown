@@ -38,6 +38,9 @@ fi
 
 echo $VAL > $TRACKER
 
+BASE=`basename $1`
+NO_EXT_NAME="${BASE%.*}"
+
 NAME="$(basename $1)"_"$VAL".html
 
 pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $INSTALL_PATH/format.css $MAD_TAILORED_FLAGS
@@ -51,6 +54,8 @@ then
 		$BROWSER $TMP_FOLDER/$NAME & 
 	fi
 else
-	echo "$TMP_FOLDER/$NAME"
+	cp $TMP_FOLDER/$NAME $FULL_PATH 
+	weasyprint $FULL_PATH/$NAME $FULL_PATH/$NO_EXT_NAME.pdf
+	rm $FULL_PATH/$NAME 
 fi
 
