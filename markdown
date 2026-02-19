@@ -43,6 +43,10 @@ NO_EXT_NAME="${BASE%.*}"
 
 NAME="$(basename $1)"_"$VAL".html
 
+FULL_PATH=`realpath $1`
+FULL_PATH=`dirname $FULL_PATH`
+
+
 pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $INSTALL_PATH/format.css $MAD_TAILORED_FLAGS
 
 if [ "$2" != "--noexec" ]
