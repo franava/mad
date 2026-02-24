@@ -8,6 +8,8 @@ CLB="COMMAND_LINE_BROWSER"
 TMP_FOLDER="$INSTALL_PATH/tmp"
 TRACKER="$TMP_FOLDER/tracker"
 
+FMT_FOLDER="$INSTALL_PATH/formats"
+
 if [ "$1" == "--reset" ]
 then
 	rm -fr $TMP_FOLDER/*
@@ -47,10 +49,11 @@ FULL_PATH=`realpath $1`
 FULL_PATH=`dirname $FULL_PATH`
 
 
-pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $INSTALL_PATH/format.css $MAD_TAILORED_FLAGS
+
 
 if [ "$2" != "--noexec" ]
 then
+	pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $FMT_PATH/format_git.css $MAD_TAILORED_FLAGS
 	if [ "$CLB" == "1" ]
 	then
 		$BROWSER $TMP_FOLDER/$NAME
@@ -58,6 +61,7 @@ then
 		$BROWSER $TMP_FOLDER/$NAME & 
 	fi
 else
+	pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $FMT_PATH/format_pdf.css $MAD_TAILORED_FLAGS
 	cp $TMP_FOLDER/$NAME $FULL_PATH 
 	weasyprint $FULL_PATH/$NAME $FULL_PATH/$NO_EXT_NAME.pdf
 	rm $FULL_PATH/$NAME 

@@ -416,6 +416,15 @@ padding: 1em;
 display: inline;
 }
 
+
+h2 {
+	page-break-before: always ;
+	break-before: page;
+}
+h3 {
+	page-break-before: always ;
+	break-before: page;
+}
 /* Github css */
 
 html,body{        margin: auto;

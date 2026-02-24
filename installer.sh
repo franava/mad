@@ -115,15 +115,16 @@ fi
 mkdir $INSTALL_FOLDER/tmp
 touch $INSTALL_FOLDER/tmp/tracker
 
+mkdir $INSTALL_FOLDER/formats/
 
-cp $CURRENT_FOLDER/format.css $INSTALL_FOLDER/format.css
+cp $CURRENT_FOLDER/formats/* $INSTALL_FOLDER/formats/ 
 chmod +x $INSTALL_FOLDER/mad
 
-chown -R $SUDO_UID.$SUDO_GID $INSTALL_FOLDER/
+chown -R $SUDO_UID:$SUDO_GID $INSTALL_FOLDER/
 
 rm ./mad.tmp ./mad2.tmp -f
 
 ln -s $INSTALL_FOLDER/mad /usr/bin/mad
-chown -h $SUDO_UID.$SUDO_GID /usr/bin/mad 
+chown -h $SUDO_UID:$SUDO_GID /usr/bin/mad 
 
 
