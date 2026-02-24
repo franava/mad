@@ -1,6 +1,9 @@
-# mad
-A simple command to open a markdown locally using your favorite browser
-
+---
+title: "Mad: a comprehensive guide"
+author: "Francesco Avanzi"
+...
+# mad 
+A quick method to perform markdown conversions from your command line
 ## What is mad?
 
 As previously stated, **mad** is an easy command to view a markdown file using your browser.
