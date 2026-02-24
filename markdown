@@ -8,7 +8,7 @@ CLB="COMMAND_LINE_BROWSER"
 TMP_FOLDER="$INSTALL_PATH/tmp"
 TRACKER="$TMP_FOLDER/tracker"
 
-FMT_FOLDER="$INSTALL_PATH/formats"
+FMT_PATH="$INSTALL_PATH/formats"
 
 if [ "$1" == "--reset" ]
 then
