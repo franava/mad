@@ -48,22 +48,26 @@ NAME="$(basename $1)"_"$VAL".html
 FULL_PATH=`realpath $1`
 FULL_PATH=`dirname $FULL_PATH`
 
-
-
-
-if [ "$2" != "--noexec" ]
+if [ "$2" == "" ]
 then
-	pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $FMT_PATH/format_git.css $MAD_TAILORED_FLAGS
+	pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $FMT_PATH/format_git.css $MAD_TAILORED_FLAGS --mathml
 	if [ "$CLB" == "1" ]
 	then
 		$BROWSER $TMP_FOLDER/$NAME
 	else
 		$BROWSER $TMP_FOLDER/$NAME & 
 	fi
-else
+elif [ "$2" == "--noexec" ]
+then
 	pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $FMT_PATH/format_pdf.css $MAD_TAILORED_FLAGS
 	cp $TMP_FOLDER/$NAME $FULL_PATH 
 	weasyprint $FULL_PATH/$NAME $FULL_PATH/$NO_EXT_NAME.pdf
 	rm $FULL_PATH/$NAME 
+elif [ "$2" == "--nobrowse" ]
+then
+	HERE=`pwd`
+	NAME="$(basename $1)".html
+	pandoc --standalone -f markdown+raw_html -t html5 -o $HERE/$NAME $1 -c $FMT_PATH/format_git.css $MAD_TAILORED_FLAGS --mathml
+	echo "$HERE/$NAME"
 fi
 

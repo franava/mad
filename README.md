@@ -10,6 +10,56 @@ As previously stated, **mad** is an easy command to view a markdown file using y
 The script uses [pandoc](https://github.com/jgm/pandoc) to convert the markdown file in an html file, stores it in a temporary folder and opens it using a previously selected browser (the default is set to firefox).
 The **mad** script also allows you to open multiple files in the same browser instance while keeping track of each file opened.
 
+Also, a **madui** script is provided to edit markdowns at realtime.
+This script is powerful but fragile, and is based on some COTS. the list is provided down here
+
+### tmux
+
+[tmux](https://github.com/tmux/tmux/wiki) is is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
+Under ubuntu and debian-like flavour of linux, tmux can be installed as it follows
+
+```bash
+sudo apt update 
+sudo apt install temux
+``` 
+
+### mlterm
+
+[mlterm](https://github.com/arakiken/mlterm) is a Multi Lingual TERMinal emulator. it is used to stack multiple tmux with different functionalities, and to overlay pngs directly into the terminal.
+mlterm has to be compiled, the instructions are found in the githab repository.
+
+### inotify-tools
+
+
+[inotify-tools](https://github.com/inotify-tools/inotify-tools), and more specifically inotifywait, is used to track the save on the markdown file that has to be converted in real time.
+under ubuntu the inotify-tools package can be installed as it follow:
+
+```bash
+sudo apt update 
+sudo apt install inotify-tools
+```
+
+### sixel
+
+[libsixel-bin](https://github.com/saitoha/libsixel) provides a set of tools that will convert png in a format displayable by the terminal
+to install it under debian-like os:
+
+```bash
+sudo apt update
+sudo apt install libsixel-bin
+```
+
+### shot-scraper
+
+[shot-scraper](https://shot-scraper.datasette.io/en/stable/) converts an html page into a png, allowing lib-sixel and mlterm to overlay it in your terminal
+to install it you will need python and pipx, then type:
+
+```bash
+pipx install shot-scraper
+shot-scraper install
+```
+
+
 ## Why should I use mad?
 
 Well, in principle you should not. Expecially if you are an IDE user, you might never have the need for such a tool. 
@@ -143,11 +193,11 @@ Well, kind of. This is what the script was originally written for. But given the
 
 ## Current Features: implemented vs desired
 
-
-[x] Generate a git-like html for README files
-[x] hands-on installer
-[x] unattended installer (-x)
-[ ] set-up the unattended installer chosing the browser
-[x] --noexec mode, generating a PDF file
-[x] uninstall feature (-u) 
-[ ] procedure to add/modify/remove formats
+- [x] Generate a git-like html for README files
+- [x] hands-on installer
+- [x] unattended installer (-x)
+- [ ] set-up the unattended installer chosing the browser
+- [x] --noexec mode, generating a PDF file
+- [x] --nobrowse mode, generating an html page in the current folder, not opening it with a browser 
+- [x] uninstall feature (-u) 
+- [ ] procedure to add/modify/remove formats

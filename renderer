@@ -1,0 +1,24 @@
+#!/bin/bash
+
+MD_FILE=$1
+PAGE_DIR=/tmp/my_screenshots
+TMP_PAGE_DIR=/tmp/my_tmp_screenshots
+
+SS_PATH="SS_PATH_FOLDER"
+if [ -d "$TMP_PAGE_DIR" ]
+then
+	rm -fr $TMP_PAGE_DIR
+fi
+mkdir $TMP_PAGE_DIR
+
+RAW_HTML=`mad "$MD_FILE" --nobrowse`
+HTML_ABS=`readlink -f "$RAW_HTML"`
+
+$SS_PATH/shot-scraper "$HTML_ABS" -o /tmp/full.png --width 1100 --wait 3000
+convert /tmp/full.png -crop 1100x1200 +repage "$TMP_PAGE_DIR/page_%03d.png"
+
+if [ -d "$PAGE_DIR" ]
+then
+	rm -fr $PAGE_DIR
+	mv $TMP_PAGE_DIR $PAGE_DIR
+fi

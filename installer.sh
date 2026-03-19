@@ -32,8 +32,7 @@ then
 		if [ -L /usr/bin/mad ]
 		then	
 			rm /usr/bin/mad
-		else
-			echo "mad was not linked in '/usr/bin/' folder"
+			rm /usr/bin/madui
 		fi
         exit 0
     elif [ "$1" == "-x" ] 
@@ -54,13 +53,19 @@ if [ -d $INSTALL_FOLDER ]
 then
 	echo "install folder \"$INSTALL_FOLDER\" already exists"
 	echo "aborting installation"
-	exit 1
+	exit 2
 fi
 
 
 mkdir $INSTALL_FOLDER
 
 cat markdown | sed -e "s|INSTALL_PATH_FOLDER|${INSTALL_FOLDER}|g" > ./mad.tmp
+cat madui | sed -e "s|INSTALL_PATH_FOLDER|${INSTALL_FOLDER}|g" > ./madui.tmp
+
+SS_PATH_FOLDER=/home/franava/.local/bin/
+#SS_PATH_FOLDER=`which shot-scraper` 
+echo "SSPF: $SS_PATH_FOLDER"
+cat renderer | sed -e "s|SS_PATH_FOLDER|${SS_PATH_FOLDER}|g" > ./renderer.tmp
 
 if [ "$1" != "-x" ]
 then
@@ -112,19 +117,30 @@ then
 else
 	cat ./mad2.tmp | sed "s|COMMAND_LINE_BROWSER|0|g" > $INSTALL_FOLDER/mad
 fi
+
+cp ./madui.tmp $INSTALL_FOLDER/madui 
+cp ./renderer.tmp $INSTALL_FOLDER/renderer
+
 mkdir $INSTALL_FOLDER/tmp
 touch $INSTALL_FOLDER/tmp/tracker
 
 mkdir $INSTALL_FOLDER/formats/
 
 cp $CURRENT_FOLDER/formats/* $INSTALL_FOLDER/formats/ 
+
 chmod +x $INSTALL_FOLDER/mad
+chmod +x $INSTALL_FOLDER/renderer
+chmod +x $INSTALL_FOLDER/madui
 
 chown -R $SUDO_UID:$SUDO_GID $INSTALL_FOLDER/
 
-rm ./mad.tmp ./mad2.tmp -f
+rm ./mad.tmp ./mad2.tmp ./madui.tmp ./renderer.tmp -f
 
 ln -s $INSTALL_FOLDER/mad /usr/bin/mad
-chown -h $SUDO_UID:$SUDO_GID /usr/bin/mad 
+ln -s $INSTALL_FOLDER/madui /usr/bin/madui
+ln -s $INSTALL_FOLDER/renderer /usr/bin/renderer
 
+chown -h $SUDO_UID:$SUDO_GID /usr/bin/mad 
+chown -h $SUDO_UID:$SUDO_GID /usr/bin/madui 
+chown -h $SUDO_UID:$SUDO_GID /usr/bin/renderer 
 
