@@ -33,6 +33,7 @@ then
 		then	
 			rm /usr/bin/mad
 			rm /usr/bin/madui
+            rm /usr/bin/renderer
 		fi
         exit 0
     elif [ "$1" == "-x" ] 
