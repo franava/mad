@@ -63,6 +63,12 @@ then
 	cp $TMP_FOLDER/$NAME $FULL_PATH 
 	weasyprint $FULL_PATH/$NAME $FULL_PATH/$NO_EXT_NAME.pdf
 	rm $FULL_PATH/$NAME 
+elif [ "$2" == "--report" ]
+then 
+	pandoc --standalone -f markdown+raw_html -t html5 -o $TMP_FOLDER/$NAME $1 -c $FMT_PATH/format_report.css $MAD_TAILORED_FLAGS
+	cp $TMP_FOLDER/$NAME $FULL_PATH 
+	weasyprint $FULL_PATH/$NAME $FULL_PATH/$NO_EXT_NAME.pdf
+	rm $FULL_PATH/$NAME 
 elif [ "$2" == "--nobrowse" ]
 then
 	HERE=`pwd`
